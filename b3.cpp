@@ -1,58 +1,48 @@
-#include<bits/stdc++.h>
-#include<sstream>
-#include<unordered_map>
-
+#include <iostream>
+#include <vector>
 using namespace std;
 
-unordered_map<char , int > createShiftTable(const string &pattern) {
-	unordered_map<char,int> shiftTable;
-	int m = pattern.size();
-	for (int i = 0 ; i < m - 1 ; i++) {
-		shiftTable[pattern[i]] = m - i - 1;
-		
-	}
-	return shiftTable;
+// Hàm đệ quy tính tổng các số lẻ trong mảng a
+int sumOddNumbers(const vector<int>& a, int index) {
+    // Điều kiện dừng: nếu index vượt qua kích thước mảng
+    if (index == a.size()) {
+        return 0;
+    }
+    
+    // Nếu a[index] là số lẻ, cộng vào tổng
+    if (a[index] % 2 != 0) {
+        return a[index] + sumOddNumbers(a, index + 1);
+    } else {
+        return sumOddNumbers(a, index + 1);
+    }
 }
 
-int boyerMooreHorspool(const string text , const string & pattern) {
-	int n = text.size();
-	int m = pattern.size();
-	unordered_map<char , int > shiftTable = createShiftTable(pattern);
-	int i = 0 ; 
-	while (i <= n - m) {
-		int j = m -1 ;
-		while (j >= 0 && pattern[j] == text[i + j]) {
-			j--;
-		}
-		if (j < 0 ) return i ;
-		i += (shiftTable.count(text[i + m - 1]) > 0 ) ? shiftTable[text[i+m-1]] : m;
-	}
-	return -1;
-}
-
-string replaceFirstOccurrence(string text , const string &pattern , const string &replacement) {
-	int pos = boyerMooreHorspool(text , pattern);
-	if (pos != -1) {
-		text.replace(pos , pattern.size()  , replacement);
-		
-	}
-	return text;
-}
 int main() {
-	string s;
-	cout<<"Nhap xau ki tu s : ";cin>>s;
-	getline(cin , s);
-	
-	string p = "1000";
-	string q = "mot nghin dong";
-	int position = boyerMooreHorspool(s,p);
-	if (position != -1) {
-		cout<<"Xau " << p << " xuat hien tai vi tri "<<position <<endl;
-		s = replaceFirstOccurrence(s , p , q);
-		cout<<"Xau moi sau khi thay the : " << s << endl;
-	}
-	else {
-		cout<<"Xau "<<p << " khong xuat hien trong sau s . "<<endl;
-	}
-	return 0;
+    int n;
+    
+    // Nhập số phần tử của mảng (n >= 10)
+    cout << "Nhập số phần tử của mảng (n >= 10): ";
+    cin >> n;
+
+    if (n < 10) {
+        cout << "Số phần tử phải lớn hơn hoặc bằng 10!" << endl;
+        return 1;
+    }
+
+    vector<int> a(n);
+
+    // Nhập các phần tử của mảng a
+    cout << "Nhập các phần tử của mảng a: " << endl;
+    for (int i = 0; i < n; i++) {
+        cout << "a[" << i << "] = ";
+        cin >> a[i];
+    }
+
+    // Tính tổng các số lẻ trong mảng a bằng thuật toán đệ quy
+    int totalOddSum = sumOddNumbers(a, 0);
+
+    // Hiển thị kết quả
+    cout << "Tổng các số lẻ trong mảng a là: " << totalOddSum << endl;
+
+    return 0;
 }

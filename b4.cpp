@@ -4,16 +4,16 @@
 #include <unordered_map>
 using namespace std;
 
-// Thuật toán tham lam để tìm số lượng phần tử nhiều nhất trong mảng a sao cho tổng <= C
+// Thuật toán tham lam để tìm số lượng phần tử ít nhất trong mảng a sao cho tổng > C
 void greedySelection(const vector<double>& a, double C, vector<double>& selected, double& totalSum, int& D) {
     totalSum = 0;
     D = 0;
-    for (double val : a) {
-        if (totalSum + val <= C) {
-            selected.push_back(val);
-            totalSum += val;
-            D++;
-        } else {
+    // Duyệt mảng từ cuối
+    for (int i = a.size() - 1; i >= 0; i--) {
+        selected.push_back(a[i]);
+        totalSum += a[i];
+        D++;
+        if (totalSum > C) {
             break;
         }
     }
@@ -32,30 +32,32 @@ unordered_map<char, int> createShiftTable(const string& pattern) {
     return shiftTable;
 }
 
-bool boyerMooreHorspool(const string& P, const string& Q) {
-    int n = P.size();
-    int m = Q.size();
-    if (m > n) return false;
+int boyerMooreHorspool(const string& P, const string& Q) {
+    int n = Q.size();
+    int m = P.size();
+    if (m > n) return -1;  // Nếu P dài hơn Q thì không thể tìm thấy
 
-    unordered_map<char, int> shiftTable = createShiftTable(Q);
-    int i = m - 1; // Bắt đầu từ cuối chuỗi mẫu Q
-    int j = m - 1; // Bắt đầu từ cuối chuỗi P
+    unordered_map<char, int> shiftTable = createShiftTable(P);
+    int i = m - 1; // Bắt đầu từ cuối chuỗi mẫu P
+    int j = m - 1; // Bắt đầu từ cuối chuỗi Q
 
     while (i < n) {
-        if (P[j] == Q[i]) {
-            if (j == 0) return true; // Nếu khớp hết chuỗi Q, trả về true
+        if (Q[j] == P[i]) {
+            if (j == 0) return i;  // Nếu khớp hết chuỗi P, trả về vị trí bắt đầu
             j--; i--;
         } else {
-            int shift = shiftTable[P[i]]; // Dịch chuyển theo bảng dịch chuyển
+            int shift = shiftTable[Q[i]]; // Dịch chuyển theo bảng dịch chuyển
             i = i + m - 1 < n ? i + shift : n;
             j = m - 1;
         }
     }
-    return false;
+    return -1; // Trả về -1 nếu không tìm thấy P trong Q
 }
 
 int main() {
     int n;
+    
+    // Nhập số phần tử của mảng (n >= 8)
     cout << "Nhập số phần tử của mảng (n >= 8): ";
     cin >> n;
 
@@ -65,8 +67,11 @@ int main() {
     }
 
     vector<double> a(n);
-    cout << "Nhập các phần tử của mảng a theo chiều tăng dần: " << endl;
+
+    // Nhập các phần tử của mảng a (đã được sắp xếp theo chiều tăng dần)
+    cout << "Nhập các phần tử của mảng a (theo chiều tăng dần): " << endl;
     for (int i = 0; i < n; i++) {
+        cout << "a[" << i << "] = ";
         cin >> a[i];
     }
 
@@ -74,7 +79,7 @@ int main() {
     cout << "Nhập giá trị C: ";
     cin >> C;
 
-    // 1. Thuật toán tham lam để tính số lượng phần tử và tổng không vượt quá C
+    // 1. Thuật toán tham lam để tính số lượng phần tử và tổng vượt qua C
     vector<double> selected;
     double totalSum;
     int D;
@@ -88,7 +93,7 @@ int main() {
     }
     cout << endl;
 
-    // 2. Thuật toán Boyer-Moore-Horspool để kiểm tra Q có là chuỗi con của P không
+    // 2. Thuật toán Boyer-Moore-Horspool để tìm vị trí chuỗi P trong chuỗi Q
     string P, Q;
     cout << "Nhập chuỗi P: ";
     cin.ignore();  // Để bỏ qua ký tự newline còn lại trong buffer
@@ -96,11 +101,11 @@ int main() {
     cout << "Nhập chuỗi Q: ";
     getline(cin, Q);
 
-    bool isSubstring = boyerMooreHorspool(P, Q);
-    if (isSubstring) {
-        cout << "Q là chuỗi con của P." << endl;
+    int position = boyerMooreHorspool(P, Q);
+    if (position != -1) {
+        cout << "Chuỗi P xuất hiện trong chuỗi Q tại vị trí: " << position << endl;
     } else {
-        cout << "Q không phải là chuỗi con của P." << endl;
+        cout << "Chuỗi P không xuất hiện trong chuỗi Q." << endl;
     }
 
     return 0;

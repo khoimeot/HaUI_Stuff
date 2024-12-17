@@ -1,47 +1,52 @@
-#include<bits/stdc++.h>
-
+#include <iostream>
+#include <vector>
 using namespace std;
 
-bool check(string &s) {
-	int n = s.length();
-	for (int i = 0 ; i < n/2 ; i++) {
-		if (s[i] != s[n - i - 1]) {
-			return false;
-		}
-		
-	}
-	return true ;
+// Hàm tính tổng các phần tử trong mảng a từ chỉ số low đến high
+double sumArray(const vector<double>& a, int low, int high) {
+    // Nếu chỉ có một phần tử, trả về giá trị của nó
+    if (low == high) {
+        return a[low];
+    }
+    // Tính chỉ số giữa của mảng
+    int mid = (low + high) / 2;
+    
+    // Tính tổng của nửa bên trái và nửa bên phải
+    double leftSum = sumArray(a, low, mid);
+    double rightSum = sumArray(a, mid + 1, high);
+    
+    // Trả về tổng của hai nửa
+    return leftSum + rightSum;
 }
-string F2(string &s , int k ) {
-	int n = s.length();
-	int left = k ,right = k ;
-	while (left >= 0 && right < n && s[left] == s[right]) {
-		left -- ;
-		right++;
-	}
-	return s.substr(left + 1 , right - left - 1);
-}
+
 int main() {
-	string s ;
-	cout<<"Nhap sau s : " ; cin>>s;
-	
-	if (check(s)) {
-		cout<<"Xau la doi xung";
-		
-	}
-	else {
-		cout<<"Xau khong doi xung"<<endl;	
-		int k ;
-		cout<<"Nhap vi tri k :";
-		cin>>k;
-		if(k >= 0 && k <s.length()) {
-			string result = F2(s , k-1);
-			cout<<"xau con dai nhat co tam la s["<<k-1<<"] la :"<<result <<endl;
-		}
-		else {
-			cout<<"Vi tri khong hop le "<<endl;
-		}
-	}
-	return 0;
-	
+    int n;
+    
+    // Nhập số phần tử của mảng (n ≥ 10)
+    cout << "Nhập số phần tử của mảng (n >= 10): ";
+    cin >> n;
+
+    // Kiểm tra nếu n >= 10
+    if (n < 10) {
+        cout << "Số phần tử phải lớn hơn hoặc bằng 10!" << endl;
+        return 1;
+    }
+
+    // Khởi tạo mảng a
+    vector<double> a(n);
+
+    // Nhập các phần tử của mảng a
+    cout << "Nhập các phần tử của mảng a: " << endl;
+    for (int i = 0; i < n; i++) {
+        cout << "a[" << i << "] = ";
+        cin >> a[i];
+    }
+
+    // Tính tổng các phần tử của mảng a
+    double result = sumArray(a, 0, n - 1);
+
+    // Hiển thị kết quả
+    cout << "Tổng các phần tử trong mảng a là: " << result << endl;
+
+    return 0;
 }
