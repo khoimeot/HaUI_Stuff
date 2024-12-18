@@ -1,0 +1,270 @@
+/* Reset CSS */
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+header {
+    background-color: white; /* Pink background */
+    color: #fff;
+}
+
+/* Top Row: Logo and Cart */
+.top-row {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 60px;
+}
+
+.logo img {
+    width: 80px; /* Adjust logo size */
+}
+
+.cart {
+    text-align: center;
+    color: black;
+}
+
+.cart span {
+    display: block;
+}
+
+/* Bottom Row: Navigation and Search */
+.bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFCCFF;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding-left: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #FFCCFF; /* Light pink on hover */
+}
+
+/* Search Bar */
+.search {
+    display: flex;
+}
+
+.search input {
+    border: 2px solid #FFCCFF;
+    padding: 5px;
+    outline: none;
+}
+
+.search button {
+    background-color: #FFCCFF;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.main-layout {
+    display: flex; /* Sử dụng Flexbox để chia cột */
+    margin-top: 20px; /* Cách header một đoạn */
+}
+
+/* Navbar */
+.navbar {
+    width: 250px; /* Độ rộng cố định */
+    background-color: white; /* Nền vàng */
+    padding: 10px;
+    
+    border: 1px solid #999999; /* Viền xám */
+}
+
+.menu-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #000;
+    background-color: #FFCC33;
+    height: 50px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 20px;
+
+}
+
+/* Menu cấp 1 */
+.menu {
+    list-style: none;
+    padding: 0;
+    
+    
+}
+
+.menu li {
+    margin-bottom: 5px;
+    position: relative; /* Đặt menu cấp 1 làm gốc để submenu căn theo */
+}
+
+.menu a {
+    display: block; /* Chiếm toàn bộ chiều ngang */
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #FFF; /* Nền trắng */
+    transition: background 0.3s;
+}
+
+.menu a:hover {
+    background-color: #FFCCFF; /* Màu hồng nhạt khi hover */
+}
+
+/* Submenu cấp 2 */
+.submenu {
+    display: none; /* Ẩn mặc định */
+    list-style: none;
+    position: absolute; /* Hiển thị submenu bên phải */
+    top: 0; /* Canh submenu ngang với menu cấp 1 */
+    left: 100%; /* Đẩy submenu sang bên phải */
+    width: 200px; /* Độ rộng cố định của submenu */
+    background-color: #FFF; /* Nền submenu màu trắng */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+    z-index: 1000; /* Giữ submenu nổi trên các phần khác */
+    padding-left: 0px ;
+}
+.submenu li {
+    margin: 0; /* Xóa margin */
+    padding: 0; /* Xóa padding */
+}
+
+.submenu a {
+    color: #000;
+    background-color: #F9F9F9; /* Nền nhạt hơn cho submenu */
+}
+
+.submenu a:hover {
+    background-color: #FFCCFF; /* Hồng nhạt khi hover */
+}
+
+/* Hiển thị submenu khi hover vào menu cấp 1 */
+.dropdown:hover .submenu {
+    display: block; /* Hiển thị submenu */
+}
+
+/* Nội dung chính bên phải */
+.content {
+    flex: 1; /* Chiếm phần còn lại của layout */
+    padding: 20px;
+    background-color: #F5F5F5; /* Màu nền nhạt cho nội dung */
+}
+/* Content bên phải */
+.content {
+    flex: 1; /* Content chiếm hết phần còn lại */
+}
+
+.content h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Product container */
+.product-container {
+    display: flex;
+    flex-wrap: wrap; /* Xuống hàng khi thiếu không gian */
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+}
+
+.product {
+    flex: 1 1 calc(50% - 20px); /* Chia 2 cột trên mỗi hàng */
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    float: left;
+}
+
+.product h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.price {
+    color: #E60000;
+}
+
+.price span {
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 10px;
+}
+
+button {
+    background-color: #FF3399;
+    color: #FFF;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #CC0066;
+}
+
+/* Banners */
+.banners {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.banner {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    margin: 0 10px;
+    color: #FFF;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.banner.green {
+    background-color: #4CAF50;
+}
+
+.banner.orange {
+    background-color: #FFA500;
+}
+
+.banner.pink {
+    background-color: #FF69B4;
+}
+
+.banner span {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+}
