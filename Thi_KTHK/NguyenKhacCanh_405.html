@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        header{
+            width: 1000px;margin: auto;
+        }
+        .banner{
+            display: flex;
+            width: 1000px;
+        }
+        .phai{
+           margin-right: 0;
+        }
+        .banner img{
+            width: 70px;
+            height: 70px;
+        }
+        header .giua{
+            text-align: center;
+            margin: 0 auto;
+            color: blue;
+            font-size: 25px;
+            font-weight: bold;
+            height: 70px;
+            line-height: 40px;
+        }
+        nav{
+            width: 100%;
+            background-color: greenyellow;
+        }
+        nav ul.cha{
+            margin: auto;
+            display: flex;
+            list-style: none;
+            width: 1000px;
+        }
+        ul.cha>li{
+            width: 250px;
+        }
+        nav ul.cha li{
+            text-align: center;
+            background-color: greenyellow;
+            position: relative;
+            height: 50px;
+            line-height: 50px;
+            
+        }
+        nav ul.cha li:hover{
+            background-color: red;
+        }
+        nav ul.cha li:hover ul.con{
+            visibility: visible;
+        }
+        nav ul.cha li:hover>a{
+            color: yellow;
+        }
+        nav ul.con{
+            position: absolute;
+            width: 200px;
+            left: 0;
+            list-style: none;
+            visibility: hidden;
+            
+        }
+        a{
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+        }
+        .content{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 1000px;
+            margin: 15px auto;
+            border: 1px black solid;
+        }
+        ._1o{
+            height: 350px;
+            font-size: 14px;
+            color: blue;
+            border-right: 1px black solid;
+            padding: 0 4px;
+        }
+        ._1o img{
+            height: 300px;
+            width: 240px;
+        }
+        .mota{
+            text-align: center;
+        }
+        footer{
+            text-align: center;
+            color: white;
+            background-color: rgb(68, 132, 242);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <div class="trai"><img src="anh.png" alt=""></div>
+            <div class="giua">
+                    <p>THỜI TRANG N2</p>
+                    <p><i>SANG TRỌNG - ĐẲNG CẤP</i></p>
+            </div>
+            <div class="phai"><img src="anh.png" alt=""></div>
+        </div>
+    </header>
+    <nav>
+        <ul class="cha">
+            <li><a href="">TRANG CHỦ</a></li>
+            <li><a href="">THỜI TRANG NỮ</a>
+                <ul class="con">
+                    <li><a href="">GIÀY</a></li>
+                    <li><a href="">ĐỒNG HỒ</a></li>
+                    <li><a href="">ÁO SƠ MI</a></li>
+                    <li><a href="">TÚI XÁCH</a></li>
+                </ul>
+            </li>
+            <li><a href="">THỜI TRANG NAM</a></li>
+            <li><a href="">GÓP Ý</a></li>
+            <li><a href="">ĐĂNG KÝ</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <div class="_1o_le _1o">
+            <img src="ao.webp" alt="">
+            <div class="mota">
+                Áo khoác nỉ nam <br>
+                Giá: 550000 <sup>đồng</sup>
+            </div>
+        </div>
+        <div class="_1o_chan _1o">
+            <img src="anh.png" alt="">
+            <div class="mota">
+                <b>Áo khoác nỉ nam <br>
+                <i>Giá: 550000 <sup>đồng</sup></i></b>
+            </div>
+        </div>
+        <div class="_1o_le _1o">
+            <img src="ao.webp" alt="">
+            <div class="mota">
+                Áo khoác nỉ nam <br>
+                Giá: 550000 <sup>đồng</sup>
+            </div>
+        </div>
+        <div class="_1o_chan _1o">
+            <img src="anh.png" alt="">
+            <div class="mota">
+                <b>Áo khoác nỉ nam <br>
+                <i>Giá: 550000 <sup>đồng</sup></i></b>
+            </div>
+        </div>
+        <div class="_1o_le _1o">
+            <img src="ao.webp" alt="">
+            <div class="mota">
+                Áo khoác nỉ nam <br>
+                Giá: 550000 <sup>đồng</sup>
+            </div>
+        </div>
+        <div class="_1o_chan _1o">
+            <img src="anh.png" alt="">
+            <div class="mota">
+                <b>Áo khoác nỉ nam <br>
+                <i>Giá: 550000 <sup>đồng</sup></i></b>
+            </div>
+        </div>
+        <div class="_1o_le _1o">
+            <img src="ao.webp" alt="">
+            <div class="mota">
+                Áo khoác nỉ nam <br>
+                Giá: 550000 <sup>đồng</sup>
+            </div>
+        </div>
+        <div class="_1o_chan _1o">
+            <img src="anh.png" alt="">
+            <div class="mota">
+                <b>Áo khoác nỉ nam <br>
+                <i>Giá: 550000 <sup>đồng</sup></i></b>
+            </div>
+        </div>
+        
+    </div>
+    <footer>
+        Copyright 2020 by Anhpt <br>
+        Mọi ý kiến đóng góp về Website xin gửi về Admin@gmail.com
+    </footer>
+</body>
+</html>

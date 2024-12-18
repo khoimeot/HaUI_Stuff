@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu ngang</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .menu{
+            width: 100%;
+            background-color: yellow;
+           
+        }
+        ul.bo{
+            width: 900px;
+            margin: auto;
+            list-style: none;
+            display: flex;
+            
+        }
+        ul.bo li{
+            background-color: yellow;
+            text-align: center;
+            width: 150px;
+            position: relative;
+            height: 50px;
+            line-height: 50px;
+        }
+        ul.bo>li{
+            border-right: 1px black solid;
+        }
+        ul.con{
+            position: absolute;
+            left: 0;
+            top: 50px;
+            list-style: none;
+            display: none;
+        }
+        ul.con li{
+            border-bottom: 1px black solid;
+        }
+        ul.bo li:hover{
+            background-color: red;
+        }
+        ul.bo li:hover ul.con{
+            display: grid;
+        }
+        ul.bo li:hover>a{
+            color: aqua;
+        }
+        a{
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <ul class="bo">
+            <li><a href="">Tiêu đề 1</a></li>
+            <li><a href="">Tiêu đề 2</a></li>
+            <li><a href="">Tiêu đề 3</a>
+                <ul class="con">
+                    <li><a href="">Tiêu đề 3-1</a></li>
+                    <li><a href="">Tiêu đề 3-2</a></li>
+                    <li><a href="">Tiêu đề 3-3</a></li>
+                </ul>
+            </li>
+            <li><a href="">Tiêu đề 4</a></li>
+            <li><a href="">Tiêu đề 5</a></li>
+            <li style="border: none;"><a href="">Tiêu đề 6</a></li>
+        </ul>
+    </div>
+</body>
+</html>

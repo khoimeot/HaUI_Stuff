@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            width: 250px;
+            margin: auto;
+            border: 1px black solid;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <th>Username</th>
+                <td><input type="text" required></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="password" id="ip_str" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="button" onclick="myFunction()">Kiểm tra password</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function myFunction(){
+            var pass = document.getElementById("ip_str").value;
+            if(pass.length<8 || !/[A-Z]/.test(pass) || /^\d/.test(pass)){
+                alert("Bạn nhập sai");
+            }
+            else alert("Bạn nhập đúng");
+        }
+    </script>
+</body>
+</html>

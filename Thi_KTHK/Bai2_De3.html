@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            width: 350px;
+            margin: auto;
+            border: 1px black solid;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <table>
+            <caption><h2>Sắp xếp câu theo quy luật</h2></caption>
+            <tr>
+                <th>Nhập câu ban đầu:</th>
+                <td>
+                    <input type="text" name="ip_str" id="ip_str">
+                </td>
+            </tr>
+            <tr>
+                <th>Câu sau khi sắp xếp lại:</th>
+                <td>
+                    <input type="text" name="op_str" id="op_str">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="reset">Xóa</button>
+                    <button type="button" onclick="myFunction()">Viết lại</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function myFunction(){
+            var input = document.getElementById("ip_str").value;
+            var output = input.split(' ');
+            output=output.sort();
+            output = output.join(' ', output);
+            document.getElementById("op_str").value=output;
+        }
+    </script>
+</body>
+</html>

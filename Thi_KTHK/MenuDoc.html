@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu dọc</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        .menu{
+            width: 150px;
+            margin-left: 50px;
+        }
+        ul.bo{
+            /* width: 150px; */
+            list-style: none;
+            border: 1px black solid;
+        }
+        ul.bo li{
+            background-color: yellow;
+            height: 50px;
+            line-height: 50px;
+            position: relative;
+            border-bottom: 1px black solid;
+            padding-left: 20px;
+            box-sizing: border-box;
+        }
+        ul.bo li:hover{
+            background-color: red;
+        }
+        ul.bo li:hover>a{
+            color: rgb(255, 255, 255);
+        }
+        ul.bo li:hover ul.con{
+            visibility: visible;
+        }
+        ul.con{
+            position: absolute;
+            top: 0;
+            left: 149px;
+            width: 150px;
+            list-style: none;
+            border: 1px black solid;
+            border-left: none;
+            visibility: hidden;
+        }
+        a{
+            text-transform: uppercase;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <ul class="bo">
+            <li><a href="">Tiêu đề 1</a></li>
+            <li><a href="">Tiêu đề 2</a></li>
+            <li><a href="">Tiêu đề 3</a>
+                <ul class="con">
+                    <li><a href="">Tiêu đề 3-1</a></li>
+                    <li><a href="">Tiêu đề 3-2</a></li>
+                    <li style="border: none;"><a href="">Tiêu đề 3-3</a></li>
+                </ul>
+            </li>
+            <li><a href="">Tiêu đề 4</a></li>
+            <li><a href="">Tiêu đề 5</a></li>
+            <li style="border: none;"><a href="">Tiêu đề 6</a></li>
+        </ul>
+    </div>
+</body>
+</html>
