@@ -135,34 +135,32 @@ void xoaptthu3(TRO &L, int k) {
   delete P;
 }
 
-void chenpt(TRO &L , int k ) {
-  int d = 1;
-  TRO P = NULL ,Q = L;
-  while ( Q!= NULL && d < k) {
-    P = Q;
-    Q = Q->next;
-    d++;
-  }
-  if(Q == NULL || k < 1) {
-    cout<<"Vi tri khong thich hop !";
-    return;
-  }
-  TRO A = new Node;
-  strcpy(A->infor.maHang , "2007");
-  strcpy(A->infor.tenHang , "Phan");
-  strcpy(A->infor.dvTinh , "Hop");
-  A->infor.donGia = 3000;
-  A->infor.soLuong = 15;
-  A->infor.thanhTien = 45000;
-   if (k == 1) { // Insert at the beginning
+void chenpt(TRO &L, int k, HangHoa H) {
+    int d = 1;
+    TRO P = NULL, Q = L;
+    while (Q != NULL && d < k) {
+        P = Q;
+        Q = Q->next;
+        d++;
+    }
+    if (Q == NULL || k < 1) {
+        cout << "Vi tri khong thich hop!";
+        return;
+    }
+    TRO A = new Node;
+
+    // Gán thông tin từ H vào node mới
+    A->infor = H;
+
+    if (k == 1) { // Chèn ở đầu danh sách
         A->next = L;
         L = A;
-    } else { // Insert at position k
-        A->next = P;
-        Q->next = A;
+    } else { // Chèn vào vị trí k
+        A->next = Q;
+        P->next = A;
     }
-
 }
+
 
 void bubblesort(TRO &L) {
    if (L == NULL || L->next == NULL) return;
